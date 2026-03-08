@@ -1,6 +1,6 @@
 class Movie {
-  Movie({required this.title, required this.releaseYear});
+  Movie({required this.title, required this.releaseDate});
 
   final String title;
-  final int releaseYear;
+  final DateTime releaseDate;
 }

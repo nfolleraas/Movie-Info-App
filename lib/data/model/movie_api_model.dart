@@ -70,7 +70,9 @@ class MovieApiModel {
     budget = json["budget"];
     genres = json["genres"] == null
         ? null
-        : (json["genres"] as List).map((e) => GenresApiModel.fromJson(e)).toList();
+        : (json["genres"] as List)
+              .map((e) => GenresApiModel.fromJson(e))
+              .toList();
     homepage = json["homepage"];
     id = json["id"];
     imdbId = json["imdb_id"];

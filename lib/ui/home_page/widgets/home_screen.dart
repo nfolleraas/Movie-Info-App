@@ -5,12 +5,13 @@ import 'package:movie_info_app/ui/home_page/view_models/home_view_model.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
     super.key,
-    required this.pageTitle,
-    required this.viewModel,
-  });
+    required pageTitle,
+    required HomeViewModel viewModel,
+  }) : _pageTitle = pageTitle,
+       _viewModel = viewModel;
 
-  final String pageTitle;
-  final HomeViewModel viewModel;
+  final String _pageTitle;
+  final HomeViewModel _viewModel;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -22,22 +23,30 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.pageTitle),
+        title: Text(widget._pageTitle),
       ),
       body: ListenableBuilder(
-        listenable: widget.viewModel,
+        listenable: widget._viewModel,
         builder: (context, child) {
           return Center(
-            child: switch (widget.viewModel.isLoading) {
+            child: switch (widget._viewModel.isLoading) {
               true => const CircularProgressIndicator(),
-              false => Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+              false => ListView(
+                padding: const EdgeInsets.all(8),
+                shrinkWrap: true,
                 children: [
-                  Text(
-                    widget.viewModel.movie!.title,
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  ),
-                  Text(DateFormat.yMMMd().format(widget.viewModel.movie!.releaseDate)),
+                  for (var movie in widget._viewModel.nowPlaying!.movies)
+                    Center(
+                      child: Column(
+                        children: [
+                          Text(
+                            movie.title,
+                            style: Theme.of(context).textTheme.headlineMedium,
+                          ),
+                          Text(DateFormat.yMMMd().format(movie.releaseDate)),
+                        ],
+                      ),
+                    ),
                 ],
               ),
             },

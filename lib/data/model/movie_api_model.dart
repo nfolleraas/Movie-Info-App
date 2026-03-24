@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:movie_info_app/data/model/belongs_to_collection_api_model.dart';
 import 'package:movie_info_app/data/model/genres_api_model.dart';
 import 'package:movie_info_app/data/model/production_companies_api_model.dart';

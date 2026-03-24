@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:movie_info_app/ui/home_page/view_models/home_view_model.dart';
+import 'package:movie_info_app/ui/now_playing_screen/view_models/now_playing_view_model.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({
+class NowPlayingScreen extends StatefulWidget {
+  const NowPlayingScreen({
     super.key,
     required pageTitle,
-    required HomeViewModel viewModel,
+    required NowPlayingViewModel viewModel,
   }) : _pageTitle = pageTitle,
        _viewModel = viewModel;
 
   final String _pageTitle;
-  final HomeViewModel _viewModel;
+  final NowPlayingViewModel _viewModel;
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<NowPlayingScreen> createState() => _NowPlayingScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _NowPlayingScreenState extends State<NowPlayingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

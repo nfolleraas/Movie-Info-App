@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:movie_info_app/data/model/dates_api_model.dart';
 import 'package:movie_info_app/data/model/movie_summary_api_model.dart';
 

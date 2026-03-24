@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:movie_info_app/ui/now_playing_screen/view_models/now_playing_view_model.dart';
+import 'package:movie_info_app/ui/now_playing_screen/widgets/movie_card.dart';
 
 class NowPlayingScreen extends StatefulWidget {
-  const NowPlayingScreen({
-    super.key,
-    required pageTitle,
-    required NowPlayingViewModel viewModel,
-  }) : _pageTitle = pageTitle,
-       _viewModel = viewModel;
+  const NowPlayingScreen({super.key, required NowPlayingViewModel viewModel})
+    : _viewModel = viewModel;
 
-  final String _pageTitle;
   final NowPlayingViewModel _viewModel;
 
   @override
@@ -21,10 +16,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget._pageTitle),
-      ),
+      appBar: AppBar(),
       body: ListenableBuilder(
         listenable: widget._viewModel,
         builder: (context, child) {
@@ -36,17 +28,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                 shrinkWrap: true,
                 children: [
                   for (var movie in widget._viewModel.nowPlaying!.movies)
-                    Center(
-                      child: Column(
-                        children: [
-                          Text(
-                            movie.title,
-                            style: Theme.of(context).textTheme.headlineMedium,
-                          ),
-                          Text(DateFormat.yMMMd().format(movie.releaseDate)),
-                        ],
-                      ),
-                    ),
+                    MovieCard(movie: movie),
                 ],
               ),
             },

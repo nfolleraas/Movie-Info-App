@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:movie_info_app/ui/now_playing_screen/view_models/home_view_model.dart';
+import 'package:movie_info_app/ui/home_screen/view_models/home_view_model.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({
-    super.key,
-    required pageTitle,
-    required HomeViewModel viewModel,
-  }) : _pageTitle = pageTitle,
-       _viewModel = viewModel;
+  const HomeScreen({super.key, required HomeViewModel viewModel})
+    : _viewModel = viewModel;
 
-  final String _pageTitle;
   final HomeViewModel _viewModel;
 
   @override
@@ -22,7 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget._pageTitle),
       ),
       body: ListenableBuilder(
         listenable: widget._viewModel,

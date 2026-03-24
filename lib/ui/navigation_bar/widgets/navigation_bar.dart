@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movie_info_app/ui/explore_screen/view_models/explore_view_model.dart';
 import 'package:movie_info_app/ui/explore_screen/widgets/explore_screen.dart';
+import 'package:movie_info_app/ui/home_screen/view_models/home_view_model.dart';
 import 'package:movie_info_app/ui/home_screen/widgets/home_screen.dart';
-import 'package:movie_info_app/ui/now_playing_screen/view_models/home_view_model.dart';
 import 'package:movie_info_app/ui/now_playing_screen/view_models/now_playing_view_model.dart';
 import 'package:movie_info_app/ui/now_playing_screen/widgets/now_playing_screen.dart';
 import 'package:movie_info_app/ui/settings_screen/view_models/settings_view_model.dart';
@@ -27,10 +27,10 @@ class _NavigationBarState extends State<NavigationBar> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> pages = [
-      HomeScreen(pageTitle: 'Home', viewModel: context.read<HomeViewModel>()),
-      NowPlayingScreen(pageTitle: 'Now Playing', viewModel: context.read<NowPlayingViewModel>()),
-      ExploreScreen(pageTitle: 'Explore', viewModel: context.read<ExploreViewModel>()),
-      SettingsScreen(pageTitle: 'Settings', viewModel: context.read<SettingsViewModel>())
+      HomeScreen(viewModel: context.read<HomeViewModel>()),
+      NowPlayingScreen(viewModel: context.read<NowPlayingViewModel>()),
+      ExploreScreen(viewModel: context.read<ExploreViewModel>()),
+      SettingsScreen(viewModel: context.read<SettingsViewModel>()),
     ];
 
     return Scaffold(
@@ -39,9 +39,26 @@ class _NavigationBarState extends State<NavigationBar> {
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.theaters), label: 'Now Playing'),
-          BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'Explore'),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
+          BottomNavigationBarItem(
+            activeIcon: Icon(Icons.home_filled),
+            icon: Icon(Icons.home_outlined),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            activeIcon: Icon(Icons.theaters),
+            icon: Icon(Icons.theaters_outlined),
+            label: 'Now Playing',
+          ),
+          BottomNavigationBarItem(
+            activeIcon: Icon(Icons.explore),
+            icon: Icon(Icons.explore_outlined),
+            label: 'Explore',
+          ),
+          BottomNavigationBarItem(
+            activeIcon: Icon(Icons.settings),
+            icon: Icon(Icons.settings_outlined),
+            label: 'Settings',
+          ),
         ],
       ),
     );

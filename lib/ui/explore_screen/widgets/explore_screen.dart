@@ -2,14 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:movie_info_app/ui/explore_screen/view_models/explore_view_model.dart';
 
 class ExploreScreen extends StatefulWidget {
-  const ExploreScreen({
-    super.key,
-    required pageTitle,
-    required ExploreViewModel viewModel,
-  }) : _pageTitle = pageTitle,
-       _viewModel = viewModel;
+  const ExploreScreen({super.key, required ExploreViewModel viewModel})
+    : _viewModel = viewModel;
 
-  final String _pageTitle;
   final ExploreViewModel _viewModel;
 
   @override
@@ -22,7 +17,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget._pageTitle),
       ),
       body: ListenableBuilder(
         listenable: widget._viewModel,

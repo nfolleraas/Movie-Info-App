@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movie_info_app/data/repositories/movie_repository.dart';
 import 'package:movie_info_app/data/services/api_service.dart';
+import 'package:movie_info_app/ui/core/themes/app_theme.dart';
 import 'package:movie_info_app/ui/explore_screen/view_models/explore_view_model.dart';
 import 'package:movie_info_app/ui/home_screen/view_models/home_view_model.dart';
 import 'package:movie_info_app/ui/now_playing_screen/view_models/now_playing_view_model.dart';
@@ -54,7 +55,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Movie Info',
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
+      theme: AppTheme.dark,
       home: nav_bar.NavigationBar(),
     );
   }
